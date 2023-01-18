@@ -13,6 +13,10 @@ import Component10 from './components/Component10';
 import Parent from './components/comunicacao_direta/Parent';
 import Parent2 from './components/comunicacao_indireta/Parent2';
 
+import ComponentA from './components/comunicacao_indireta_2/ComponentA';
+
+import Avo from './components/comunicacao_direta_2/Avo';
+
 function App() {
     return(
         <>
@@ -28,6 +32,10 @@ function App() {
 
             <Parent title="Comunicação Direta"/>
             <Parent2 title="Comunicação Indireta"/>
+
+            <ComponentA title="Comunicação indireta v2" />
+
+            <Avo />
         </>
     )
 }
