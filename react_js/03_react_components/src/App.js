@@ -10,6 +10,9 @@ import Component8 from './components/Component8';
 import Component9 from './components/Component9';
 import Component10 from './components/Component10';
 
+import Parent from './components/comunicacao_direta/Parent';
+import Parent2 from './components/comunicacao_indireta/Parent2';
+
 function App() {
     return(
         <>
@@ -22,6 +25,9 @@ function App() {
             <Component8 title="Componente 8" value={10} nameTest={"joaquim"} />
             <Component9 title="Componente 9" value="joao"/>
             <Component10 title="Componente 10" textColor="green"/>
+
+            <Parent title="Comunicação Direta"/>
+            <Parent2 title="Comunicação Indireta"/>
         </>
     )
 }
