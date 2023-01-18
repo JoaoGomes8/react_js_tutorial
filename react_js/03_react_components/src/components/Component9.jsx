@@ -7,15 +7,15 @@ const Component9 = (props) =>{
             <p className="title">Título: {props.title}</p>
             <p>Nome: {props.value}</p>
 
-            <ConditionIf condition={props.value == "joao"}>
+            <ConditionIf condition={props.value === "joao"}>
                 <p>Verdadeiro, é o meu nome</p>
             </ConditionIf>
 
-            <ConditionIf condition={props.value == "paulo"}>
+            <ConditionIf condition={props.value === "paulo"}>
                 <p>É o meu pai</p>
             </ConditionIf>
 
-            <ConditionIf condition={props.value != "joao" && props.value != "paulo" }>
+            <ConditionIf condition={props.value !== "joao" && props.value !== "paulo" }>
                 <p>False, desconheço este nome</p>
             </ConditionIf>
         </div>
