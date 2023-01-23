@@ -1,4 +1,4 @@
-import React,{useState, useRef} from 'react';
+import React,{useState, useRef, useEffect} from 'react';
 import Contacto from './components/Contacto';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -53,6 +53,22 @@ export default function App() {
     }
   }
 
+  // carregar listaContactos do localStorage
+  useEffect(() =>{
+    if (localStorage.getItem('meus_contactos') !== null) {
+      setListaContactos(JSON.parse(localStorage.getItem('meus_contactos')))
+    } 
+  },[])
+  // persistência do state
+  // atualizar a lista de contactos no localstorage
+  useEffect(() =>{
+    localStorage.setItem('meus_contactos', JSON.stringify(listaContactos))
+  },[listaContactos])
+  
+  function limparStorage() {
+    setListaContactos([])
+  }
+
   return (
     <>
       <h1>Minha lista de contactos</h1>
@@ -67,6 +83,7 @@ export default function App() {
       </div>
       <hr />
       <button onClick={adicionarContacto}>Adicionar Contacto</button>
+      <button onClick={limparStorage}>Limpar Lista</button>
       <hr />
 
       {/* Apresentação da lista de contactos */}
