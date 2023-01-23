@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 export default function App() {
 
   // states
-  const [contacto,setContacto] = useState({nome:'', telefone:''});
+  const [contacto,setContacto] = useState({id:'', nome:'', telefone:''});
   const [listaContactos,setListaContactos] = useState([]);
 
   // useRef
@@ -34,7 +34,7 @@ export default function App() {
     }
 
     // adicionar novo contacto à lista
-    setListaContactos([...listaContactos,contacto])
+    setListaContactos([...listaContactos,{id:uuidv4(),...contacto}])
 
     // limpar o contacto
     setContacto({nome:'', telefone:''})
@@ -53,6 +53,16 @@ export default function App() {
     }
   }
 
+  // remover 1 contacto da lista
+  function removerContacto(id) {
+    let tmp = listaContactos.filter(ct => ct.id !== id)
+    setListaContactos(tmp)
+  }
+
+  // limpar toda a lista
+  function limparStorage() {
+    setListaContactos([])
+  }
   // carregar listaContactos do localStorage
   useEffect(() =>{
     if (localStorage.getItem('meus_contactos') !== null) {
@@ -65,9 +75,6 @@ export default function App() {
     localStorage.setItem('meus_contactos', JSON.stringify(listaContactos))
   },[listaContactos])
   
-  function limparStorage() {
-    setListaContactos([])
-  }
 
   return (
     <>
@@ -88,7 +95,7 @@ export default function App() {
 
       {/* Apresentação da lista de contactos */}
       {listaContactos.map(ct => {
-        return <Contacto  nome={ct.nome} telefone={ct.telefone} key={uuidv4()} />
+        return <Contacto key={ct.id} id={ct.id} nome={ct.nome} telefone={ct.telefone} remover={removerContacto} />
       })}
       
 
