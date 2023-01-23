@@ -20,6 +20,7 @@ export default function App() {
     setContacto( {...contacto , telefone: event.target.value})
   }
   function adicionarContacto() {
+
     // validação dos campos
     if(contacto.nome === '' || contacto.telefone === '') return
     
@@ -40,9 +41,16 @@ export default function App() {
 
     // colocar focus no input do nome
     inputNome.current.focus();
+
+
       
    
 
+  }
+  function teste(event) {
+    if (event.code === "Enter") {
+      adicionarContacto();
+    }
   }
 
   return (
@@ -55,7 +63,7 @@ export default function App() {
       </div>
       <div>
         <label htmlFor="">Telefone:</label><br />
-        <input ref={inputTelefone} type="number" onChange={definirTelefone} value={contacto.telefone} />
+        <input ref={inputTelefone} type="number" onChange={definirTelefone} value={contacto.telefone} onKeyUp={teste} />
       </div>
       <hr />
       <button onClick={adicionarContacto}>Adicionar Contacto</button>
