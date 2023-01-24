@@ -1,9 +1,13 @@
 import React,{useState, useRef, useEffect} from 'react';
-import './App.css'
-import Contacto from './components/Contacto';
-import { v4 as uuidv4 } from 'uuid';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCirclePlus, faList, faTrash } from '@fortawesome/free-solid-svg-icons'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle';
+import './App.css'
+
+import Contacto from './components/Contacto';
+import { v4 as uuidv4 } from 'uuid';
 
 export default function App() {
 
@@ -84,7 +88,8 @@ export default function App() {
       <div className='container-fluid titulo'>
         <div className='row'>
           <div className="col text-center">
-            <h4 className='text-center' >LISTA DE CONTACTOS</h4>
+            <h4 className='text-center'>LISTA DE CONTACTOS</h4>
+            
           </div>
         </div>
       </div>
@@ -104,10 +109,10 @@ export default function App() {
                 </div>
                 <div className="row mt-3">
                   <div className="col text-start">
-                    <button onClick={adicionarContacto} className='btn btn-outline-info'>Adicionar</button>
+                    <button onClick={limparStorage} className='btn btn-outline-warning'> <FontAwesomeIcon icon={faTrash} className="me-2" /> Limpar Lista </button>
                   </div>
                   <div className="col text-end">
-                    <button onClick={limparStorage} className='btn btn-outline-warning'>Limpar Lista</button>
+                    <button onClick={adicionarContacto} className='btn btn-outline-info'><FontAwesomeIcon icon={faCirclePlus} className="me-2" /> Adicionar</button>
                   </div>
                 </div>
               </div>    
