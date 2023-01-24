@@ -1,6 +1,9 @@
 import React,{useState, useRef, useEffect} from 'react';
+import './App.css'
 import Contacto from './components/Contacto';
 import { v4 as uuidv4 } from 'uuid';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle';
 
 export default function App() {
 
@@ -78,20 +81,46 @@ export default function App() {
 
   return (
     <>
-      <h1>Minha lista de contactos</h1>
-      <hr />
-      <div>
-        <label htmlFor="">Nome:</label><br />
-        <input ref={inputNome} type="text" onChange={definirNome} value={contacto.nome} />
+      <div className='container-fluid titulo'>
+        <div className='row'>
+          <div className="col text-center">
+            <h4 className='text-center' >LISTA DE CONTACTOS</h4>
+          </div>
+        </div>
       </div>
-      <div>
-        <label htmlFor="">Telefone:</label><br />
-        <input ref={inputTelefone} type="number" onChange={definirTelefone} value={contacto.telefone} onKeyUp={teste} />
+
+      <div className="container-fluid formulario">
+        <div className="row">
+          <div className="col p-3">
+            <div className="row justify-content-center">
+              <div className="col-10 col-sm-8 col-md-6 col-lg-4">
+                <div className='mb-3'>
+                  <label className="form-label" htmlFor="">Nome</label><br />
+                  <input ref={inputNome} type="text" onChange={definirNome} value={contacto.nome} className="form-control" />
+                </div>
+                <div>
+                  <label className='form-label' htmlFor="">Telefone</label><br />
+                  <input ref={inputTelefone} type="number" onChange={definirTelefone} value={contacto.telefone} onKeyUp={teste} className="form-control" />
+                </div>
+                <div className="row mt-3">
+                  <div className="col text-start">
+                    <button onClick={adicionarContacto} className='btn btn-outline-info'>Adicionar</button>
+                  </div>
+                  <div className="col text-end">
+                    <button onClick={limparStorage} className='btn btn-outline-warning'>Limpar Lista</button>
+                  </div>
+                </div>
+              </div>    
+            </div>
+            
+            
+            
+          </div>
+        </div>
       </div>
-      <hr />
-      <button onClick={adicionarContacto}>Adicionar Contacto</button>
-      <button onClick={limparStorage}>Limpar Lista</button>
-      <hr />
+
+      
+      
 
       {/* Apresentação da lista de contactos */}
       {listaContactos.map(ct => {
