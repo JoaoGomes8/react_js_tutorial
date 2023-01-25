@@ -1,42 +1,39 @@
 import React from "react";
-import {Routes, Route, Link} from "react-router-dom";
+import {Routes, Route, Navigate} from "react-router-dom";
+import { useState } from "react";
 // css
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle';
 // Components
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 import Home from "./components/Home";
 import Services from "./components/Services";
 import Contacts from "./components/Contacts";
 import Error from "./components/Error";
 import About from "./components/About";
+import AreaReservada from "./components/AreaReservada";
 
 export default function App() {
+
+  const [logado] = useState(false);
+
   return (
     <>
-      <div className="container-fluid bg-dark text-white text-center">
-        <div className="row">
-          <div className="col">
-            <h3>React Router App!</h3>
-          </div>
-        </div>
-      </div>
-      <nav className="container mt-3">
-        <div className="row">
-          <div className="col text-center">
-          <Link className="btn btn-primary me-3" to="/">Home</Link>
-          <Link className="btn btn-primary me-3" to="/services">Services</Link>
-          <Link className="btn btn-primary me-3" to="/contacts">Contacts</Link>
-          </div>
-        </div>
-      </nav>
-      
+      <Header />
+
       <Routes>
         <Route path="/" element={<Home />}/>
         <Route path="/services" element={<Services />} />
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/about" element={<About />} />
+        
+        <Route path="/area_reservada" element={ logado? <AreaReservada /> : <Navigate to="/" />} />
+
         <Route path="*" element={<Error />} />
       </Routes>
+
+      <Footer />
     </>
   );
 }
