@@ -1,12 +1,18 @@
 import Login from "./Login"
 
-export default function Userbar({usuario, login}) {
+import AuthContext from "../providers/AuthContext"
+import { useContext } from "react"
+
+export default function Userbar() {
+
+    const AuthDados = useContext(AuthContext)
     return(
         <>
             <hr />
-            Usuário: <strong>{usuario}</strong>
+            <p>Usuário: <strong>{AuthDados.usuario}</strong></p>
+            <p>Perfil: {AuthDados.perfil}</p>
             <hr />
-            <Login login={login} />
+            <Login />
         </>
     )
 }
