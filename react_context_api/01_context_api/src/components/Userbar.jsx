@@ -6,11 +6,12 @@ import { useContext } from "react"
 export default function Userbar() {
 
     const AuthDados = useContext(AuthContext)
+    
     return(
         <>
             <hr />
-            <p>Usuário: <strong>{AuthDados.usuario}</strong></p>
-            <p>Perfil: {AuthDados.perfil}</p>
+            <p>Usuário: <strong>{AuthDados.usuario.usuario}</strong></p>
+            <p>Perfil: {AuthDados.usuario.perfil}</p>
             <hr />
             <Login />
         </>
